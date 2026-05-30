@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1125" role="img" aria-labelledby="title desc">
+  <title id="title">Florants Residence fallback interior</title>
+  <desc id="desc">A calm premium apartment scene used when no hero photos are available.</desc>
+  <defs>
+    <linearGradient id="wall" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#F9F5EC"/>
+      <stop offset=".58" stop-color="#E8DAC4"/>
+      <stop offset="1" stop-color="#B8D0DB"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" x2="1">
+      <stop stop-color="#D0BEA0"/>
+      <stop offset="1" stop-color="#766F64"/>
+    </linearGradient>
+  </defs>
+  <rect width="1800" height="1125" fill="url(#wall)"/>
+  <rect y="760" width="1800" height="365" fill="url(#floor)"/>
+  <rect x="240" y="500" width="650" height="250" rx="54" fill="#F5EADD"/>
+  <rect x="290" y="424" width="220" height="116" rx="36" fill="#9FBCC9"/>
+  <rect x="548" y="434" width="250" height="106" rx="36" fill="#D8C2A1"/>
+  <rect x="195" y="714" width="770" height="95" rx="48" fill="#D1B993"/>
+  <rect x="1220" y="185" width="370" height="520" rx="16" fill="#EAF3F6" stroke="#FFFFFF" stroke-width="16"/>
+  <path d="M1240 465h330M1410 200v490" stroke="#FFFFFF" stroke-width="10"/>
+  <rect x="1010" y="615" width="390" height="58" rx="29" fill="#302F2B"/>
+  <circle cx="1200" cy="530" r="92" fill="#F7F0E5"/>
+  <rect x="1055" y="558" width="300" height="60" rx="30" fill="#ABC6AC"/>
+</svg>

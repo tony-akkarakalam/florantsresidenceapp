@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">Florants Residence mark</title>
+  <desc id="desc">Transparent monogram mark for Florants Residence.</desc>
+  <defs>
+    <linearGradient id="stroke" x1="16" y1="10" x2="82" y2="88" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D8C08F"/>
+      <stop offset=".48" stop-color="#0E4C5E"/>
+      <stop offset="1" stop-color="#9AB9C7"/>
+    </linearGradient>
+  </defs>
+  <circle cx="48" cy="48" r="43" fill="none" stroke="url(#stroke)" stroke-width="4"/>
+  <path d="M26 64V28h29v8H36v8h16v8H36v12H26Z" fill="url(#stroke)"/>
+  <path d="M50 64V41h10c8 0 14 5 14 12s-6 11-14 11H50Zm9-8h2c3 0 5-1 5-4 0-2-2-4-5-4h-2v8Z" fill="url(#stroke)"/>
+  <path d="M62 25c5 1 9 5 10 10-5-1-9-5-10-10Zm-31 2c-5 2-8 6-8 11 5-2 8-6 8-11Z" fill="#C8AC73"/>
+</svg>
