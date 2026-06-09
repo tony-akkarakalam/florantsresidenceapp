@@ -44,19 +44,19 @@ export const metadata: Metadata = {
     siteName: "Florants Residence",
     url: "/",
     images: [
-      {
-        url: heroImage,
-        width: 1200,
-        height: 630,
-        alt: "Florants Residence in Kochi"
-      }
-    ]
+  {
+    url: "/og-image.png",
+    width: 1200,
+    height: 630,
+    alt: "Florants Residence"
+  }
+]
   },
   twitter: {
     card: "summary_large_image",
     title: "Florants Residence | Your Urban Haven",
     description: site.description,
-    images: [heroImage]
+    images: ["/og-image.png"]
   },
   alternates: {
     canonical: "/"
