@@ -32,7 +32,7 @@ export const site = {
   headline: "Your Urban Haven",
   tagline: "Stay in Serenity.",
   description:
-    "A private 2BHK stay in Kochi with calm bedrooms, thoughtful essentials, and a peaceful location near Lakeshore Hospital and Forum Mall Kochi.",
+  "Florants Residence is a premium private 2BHK Airbnb stay in Kochi, Kerala, offering comfortable bedrooms, modern amenities, self check-in, WiFi, and a convenient location near Lakeshore Hospital, Forum Mall, and major city attractions.",
   bookingUrl: "https://www.airbnb.co.in/rooms/1424620787859594103",
   mapsUrl: "https://maps.app.goo.gl/UUgF7wGMijQ969Gu8",
   instagramUrl: "https://www.instagram.com/florantsbnb?igsh=MWY5ejNta2Y0NWpndA==",
