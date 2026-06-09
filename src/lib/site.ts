@@ -32,7 +32,7 @@ export const site = {
   headline: "Your Urban Haven",
   tagline: "Stay in Serenity.",
   description:
-    "A fully private 2BHK rental unit in Kochi with AC bedrooms, a bright living area, kitchen essentials, and a peaceful central location near Lakeshore Hospital and Forum Mall Kochi.",
+    "A private 2BHK stay in Kochi with calm bedrooms, thoughtful essentials, and a peaceful location near Lakeshore Hospital and Forum Mall Kochi.",
   bookingUrl: "https://www.airbnb.co.in/rooms/1424620787859594103",
   mapsUrl: "https://maps.app.goo.gl/UUgF7wGMijQ969Gu8",
   instagramUrl: "https://www.instagram.com/florantsbnb?igsh=MWY5ejNta2Y0NWpndA==",

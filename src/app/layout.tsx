@@ -1,13 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { getHeroImages, getLogoImage } from "@/lib/gallery";
 import { site } from "@/lib/site";
+
+const heroImage = getHeroImages()[0]?.src ?? "/images/exterior/Screenshot%202026-05-25%20145359.png";
+const logoImage = getLogoImage();
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://florants-residence.vercel.app"),
   title: "Florants Residence | Your Urban Haven in Kochi",
-  description:
-    "Book Florants Residence, a private 2BHK Airbnb-style stay in Kochi with 2 AC bedrooms, 2 bathrooms, kitchen essentials, WiFi, and a calm central location near Lakeshore Hospital and Forum Mall Kochi.",
+  description: site.description,
   applicationName: "Florants Residence",
   keywords: [
     "Florants Residence",
@@ -19,17 +22,27 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Florants Residence" }],
   creator: "Florants Residence",
+  publisher: "Florants Residence",
+  robots: {
+    index: true,
+    follow: true
+  },
+  icons: {
+    icon: logoImage,
+    apple: logoImage
+  },
   openGraph: {
     title: "Florants Residence | Your Urban Haven",
     description: site.description,
     type: "website",
     locale: "en_IN",
     siteName: "Florants Residence",
+    url: "/",
     images: [
       {
-        url: "/images/hero/florants-hero-fallback.svg",
-        width: 1600,
-        height: 1000,
+        url: heroImage,
+        width: 1200,
+        height: 630,
         alt: "Florants Residence in Kochi"
       }
     ]
@@ -38,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Florants Residence | Your Urban Haven",
     description: site.description,
-    images: ["/images/hero/florants-hero-fallback.svg"]
+    images: [heroImage]
   },
   alternates: {
     canonical: "/"
@@ -48,8 +61,6 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
   viewportFit: "cover",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#faf8f3" },
@@ -82,13 +93,42 @@ const themeBootstrap = `
 })();
 `;
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  name: site.name,
+  description: site.description,
+  image: [heroImage],
+  telephone: site.phone,
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://florants-residence.vercel.app",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Kochi",
+    addressCountry: "IN"
+  },
+  amenityFeature: [
+    { "@type": "LocationFeatureSpecification", name: "WiFi", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Air conditioning", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Kitchen", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Self check-in", value: true }
+  ],
+  sameAs: [site.instagramUrl, site.mapsUrl]
+};
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
-      <body>
+      <body className="antialiased">
+        <a
+          href="#main-content"
+          className="absolute left-4 top-4 z-[160] -translate-y-24 rounded-full bg-[rgb(var(--ink))] px-4 py-2 text-sm font-semibold text-[rgb(var(--surface))] transition focus:translate-y-0 focus:outline-none focus-visible:translate-y-0"
+        >
+          Skip to content
+        </a>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

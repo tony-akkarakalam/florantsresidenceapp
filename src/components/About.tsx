@@ -22,12 +22,12 @@ const highlights = [
 
 export function About() {
   return (
-    <section id="about" className="architectural-section luxury-grid">
+    <section id="about" className="architectural-section luxury-grid" aria-labelledby="about-title">
       <div className="section-shell">
         <SectionReveal className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
           <div>
             <span className="eyebrow">About the place</span>
-            <h2 className="section-title mt-7">Quiet architecture for a slower city stay.</h2>
+            <h2 id="about-title" className="section-title mt-7">Quiet architecture for a slower city stay.</h2>
           </div>
           <p className="section-copy lg:ml-auto">
             Florants Residence is composed for calm: warm light, private rooms, practical comforts, and a central Kochi
@@ -43,7 +43,6 @@ export function About() {
               fill
               sizes="100vw"
               className="object-cover object-center"
-              unoptimized
             />
           </div>
         </SectionReveal>

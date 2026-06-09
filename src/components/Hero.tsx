@@ -22,7 +22,7 @@ export function Hero({ images }: { images: HeroImage[] }) {
   const slides =
     visibleImages.length > 0
       ? visibleImages
-      : [{ id: "hero-fallback", src: "/images/hero/florants-hero-fallback.svg", alt: "Florants Residence" }];
+      : [{ id: "hero-fallback", src: "/images/exterior/Screenshot%202026-05-25%20145359.png", alt: "Florants Residence exterior" }];
 
   return (
     <section
@@ -53,7 +53,6 @@ export function Hero({ images }: { images: HeroImage[] }) {
                 priority={index === 0}
                 sizes="100vw"
                 className="object-cover object-[50%_44%] brightness-[0.76] saturate-[0.94] sm:object-[50%_48%] lg:object-center"
-                unoptimized
                 onError={() => {
                   setFailedImages((current) => new Set(current).add(image.id));
                 }}

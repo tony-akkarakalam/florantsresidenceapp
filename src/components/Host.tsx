@@ -6,21 +6,21 @@ import { SectionReveal } from "./SectionReveal";
 
 export function Host({ imageSrc }: { imageSrc: string }) {
   return (
-    <section id="host" className="architectural-section overflow-visible">
+    <section id="host" className="architectural-section overflow-visible" aria-labelledby="host-title">
       <div className="section-shell">
         <SectionReveal className="grid gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
           <div>
             <span className="eyebrow">Meet your host</span>
-            <h2 className="section-title mt-7">Hosted with calm clarity by Aldrin.</h2>
+            <h2 id="host-title" className="section-title mt-7">Hosted with calm clarity by Aldrin.</h2>
             <p className="section-copy mt-6">
               Expect responsive communication, an easy arrival rhythm, and a stay experience designed to feel private,
               prepared, and considered.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href={whatsappUrl} target="_blank" rel="noreferrer" className="btn btn-primary">
+              <Link href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                 Message Aldrin <MessageCircle size={18} />
               </Link>
-              <Link href={site.bookingUrl} target="_blank" rel="noreferrer" className="btn btn-secondary">
+              <Link href={site.bookingUrl} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
                 View Airbnb
               </Link>
             </div>
@@ -35,7 +35,6 @@ export function Host({ imageSrc }: { imageSrc: string }) {
                   fill
                   sizes="(min-width: 768px) 40vw, 100vw"
                   className="object-cover object-[50%_34%]"
-                  unoptimized
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/36 via-transparent to-transparent" />
               </div>

@@ -5,7 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Keyboard, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { GalleryCategory, GalleryImage } from "@/lib/gallery";
 
 const galleryCategories: GalleryCategory[] = [
@@ -36,18 +36,38 @@ export function Gallery({ images }: { images: GalleryImage[] }) {
     [activeCategory, images]
   );
 
+  useEffect(() => {
+    if (activeIndex === null) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setActiveIndex(null);
+      }
+    };
+
+    window.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [activeIndex]);
+
   const openImage = (image: GalleryImage) => {
     const index = filteredImages.findIndex((item) => item.id === image.id);
     setActiveIndex(index >= 0 ? index : 0);
   };
 
   return (
-    <section id="gallery" className="architectural-section">
+    <section id="gallery" className="architectural-section" aria-labelledby="gallery-title">
       <div className="section-shell">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
-          <span className="eyebrow">Gallery</span>
-          <h2 className="section-title mt-7">A curated visual walk through the residence.</h2>
+            <span className="eyebrow">Gallery</span>
+            <h2 id="gallery-title" className="section-title mt-7">A curated visual walk through the residence.</h2>
           </div>
           <p className="section-copy lg:ml-auto">
             Filter by space or open an image for an immersive viewer. The experience stays connected to the existing
@@ -61,6 +81,7 @@ export function Gallery({ images }: { images: GalleryImage[] }) {
               key={category}
               type="button"
               onClick={() => setActiveCategory(category)}
+              aria-pressed={activeCategory === category}
               className={`shrink-0 border px-4 py-2 text-[0.68rem] font-bold uppercase tracking-[0.18em] transition ${
                 activeCategory === category
                   ? "border-[rgb(var(--ink))] bg-[rgb(var(--ink))] text-[rgb(var(--surface))]"
@@ -96,7 +117,6 @@ export function Gallery({ images }: { images: GalleryImage[] }) {
                       loading={index < 3 ? "eager" : "lazy"}
                       sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                       className="object-cover transition duration-700 ease-out group-hover:scale-[1.045]"
-                      unoptimized
                     />
                     <span className="absolute inset-x-5 bottom-5 z-10 flex items-center justify-between gap-4 text-white opacity-0 transition duration-500 group-hover:opacity-100">
                     <span className="text-[0.65rem] font-bold uppercase tracking-[0.22em]">
@@ -123,6 +143,11 @@ export function Gallery({ images }: { images: GalleryImage[] }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            onClick={(event) => {
+              if (event.target === event.currentTarget) {
+                setActiveIndex(null);
+              }
+            }}
             role="dialog"
             aria-modal="true"
             aria-label="Gallery image viewer"
@@ -154,7 +179,6 @@ export function Gallery({ images }: { images: GalleryImage[] }) {
                       sizes="100vw"
                       className="object-contain"
                       priority
-                      unoptimized
                     />
                   </div>
                 </SwiperSlide>

@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useMemo, useSyncExternalStore } from "react";
+import { createContext, useContext, useEffect, useMemo, useSyncExternalStore } from "react";
 
 type Theme = "light" | "dark";
 
@@ -11,6 +11,12 @@ type ThemeContextValue = {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 const listeners = new Set<() => void>();
+
+function reflectTheme(theme: Theme) {
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.style.colorScheme = theme;
+  listeners.forEach((listener) => listener());
+}
 
 function getInitialTheme(): Theme {
   if (typeof window === "undefined") return "light";
@@ -32,14 +38,35 @@ function subscribeToTheme(listener: () => void) {
 }
 
 function applyTheme(theme: Theme) {
-  document.documentElement.dataset.theme = theme;
-  document.documentElement.style.colorScheme = theme;
+  reflectTheme(theme);
   window.localStorage.setItem("florants-theme", theme);
-  listeners.forEach((listener) => listener());
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const theme = useSyncExternalStore<Theme>(subscribeToTheme, getThemeSnapshot, () => "light");
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const syncStoredTheme = () => {
+      const stored = window.localStorage.getItem("florants-theme");
+      reflectTheme(stored === "dark" || stored === "light" ? stored : mediaQuery.matches ? "dark" : "light");
+    };
+
+    const syncSystemTheme = () => {
+      const stored = window.localStorage.getItem("florants-theme");
+      if (stored === "dark" || stored === "light") return;
+      reflectTheme(mediaQuery.matches ? "dark" : "light");
+    };
+
+    window.addEventListener("storage", syncStoredTheme);
+    mediaQuery.addEventListener("change", syncSystemTheme);
+
+    return () => {
+      window.removeEventListener("storage", syncStoredTheme);
+      mediaQuery.removeEventListener("change", syncSystemTheme);
+    };
+  }, []);
 
   const value = useMemo<ThemeContextValue>(
     () => ({
@@ -53,7 +80,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
-
 
 export function useTheme() {
   const value = useContext(ThemeContext);

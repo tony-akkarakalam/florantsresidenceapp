@@ -41,6 +41,8 @@ export const galleryCategories: GalleryCategory[] = ["All", ...galleryFolders.ma
 const imageExtensions = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif", ".svg"]);
 const reservedFallbackImages = new Set(["florants-hero-fallback.svg"]);
 const aspectCycle: GalleryImage["aspect"][] = ["landscape", "portrait", "wide", "landscape"];
+const defaultHeroImage = "/images/exterior/Screenshot%202026-05-25%20145359.png";
+const defaultLogoImage = "/images/logo/Florants%20Residence.png";
 
 function publicImagesPath(folder: string) {
   return path.join(process.cwd(), "public", "images", folder);
@@ -81,16 +83,17 @@ export function getHeroImages() {
 
   return heroImages.length > 0
     ? heroImages
-    : [{ id: "hero-fallback", src: "/images/hero/florants-hero-fallback.svg", alt: "Florants Residence" }];
+    : [{ id: "hero-fallback", src: defaultHeroImage, alt: "Florants Residence exterior" }];
 }
 
 export function getHostImage() {
   const images = readPublicImages("host");
-  return images[0] ? toPublicImageUrl("host", images[0]) : "/images/host/aldrin.svg";
+  return images[0] ? toPublicImageUrl("host", images[0]) : defaultLogoImage;
 }
 
 export function getLogoImage() {
-  return "/images/logo/Florants%20Residence.png";
+  const images = readPublicImages("logo");
+  return images[0] ? toPublicImageUrl("logo", images[0]) : defaultLogoImage;
 }
 
 export function getGalleryImages(): GalleryImage[] {

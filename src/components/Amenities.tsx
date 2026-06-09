@@ -4,12 +4,12 @@ import { SectionReveal } from "./SectionReveal";
 
 export function Amenities() {
   return (
-    <section id="amenities" className="architectural-section">
+    <section id="amenities" className="architectural-section" aria-labelledby="amenities-title">
       <div className="section-shell">
         <SectionReveal className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
           <div>
-          <span className="eyebrow">Amenities</span>
-          <h2 className="section-title mt-7">Comforts kept quiet, useful, and close at hand.</h2>
+            <span className="eyebrow">Amenities</span>
+            <h2 id="amenities-title" className="section-title mt-7">Comforts kept quiet, useful, and close at hand.</h2>
           </div>
           <p className="section-copy lg:ml-auto">
             Practical essentials, calm interiors, and simple self-care conveniences are built into the apartment for
@@ -21,12 +21,11 @@ export function Amenities() {
           <SectionReveal>
             <div className="image-frame h-full min-h-[34rem] rounded-[2rem]">
               <Image
-                src="/images/kitchen/Screenshot%202026-05-25%20145151.png"
+                src="/images/living-room/living-room2.png"
                 alt="Kitchen at Florants Residence"
                 fill
                 sizes="(min-width: 1024px) 38vw, 100vw"
                 className="object-cover object-center"
-                unoptimized
               />
             </div>
           </SectionReveal>

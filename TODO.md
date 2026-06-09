@@ -1,9 +1,6 @@
-# TODO - Turbopack stability fix
+# TODO - Current audit notes
 
-- [x] Reproduced Turbopack panic and inspected runtime/panic log.
-- [x] Verified Next.js resolves correctly from the environment.
-- [x] Started and verified app works in Webpack dev mode.
-- [ ] Disable Turbopack for local dev by updating package.json dev script (force Webpack).
-- [ ] Re-run `npm run dev` and confirm no Turbopack panic.
-- [ ] Update README with the new dev command.
+- [x] Keep local development on Webpack to avoid the Turbopack lockfile issue in this environment.
+- [x] Complete a first-pass production audit for accessibility, responsiveness, and metadata.
+- [ ] Run a final visual pass in a browser session once the sandbox browser bridge is healthy again.
 

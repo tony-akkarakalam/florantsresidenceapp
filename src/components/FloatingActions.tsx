@@ -20,7 +20,7 @@ export function FloatingActions() {
             key={action.label}
             href={action.href}
             target={action.href.startsWith("tel:") ? undefined : "_blank"}
-            rel={action.href.startsWith("tel:") ? undefined : "noreferrer"}
+            rel={action.href.startsWith("tel:") ? undefined : "noopener noreferrer"}
             className="grid size-10 place-items-center text-[rgb(var(--muted))] transition hover:bg-[rgb(var(--ink))] hover:text-[rgb(var(--surface))] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--accent))]"
             aria-label={action.label}
           >

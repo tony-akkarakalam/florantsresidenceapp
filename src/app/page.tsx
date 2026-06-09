@@ -26,7 +26,7 @@ export default function Home() {
       <ScrollRestoration />
       <SplashScreen logoSrc={logoImage} />
       <Navbar logoSrc={logoImage} />
-      <main>
+      <main id="main-content">
         <Hero images={heroImages} />
         <About />
         <PropertyDetails />

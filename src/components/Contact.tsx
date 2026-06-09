@@ -32,14 +32,17 @@ export function Contact() {
                     key={action.label}
                     href={action.href}
                     target={action.href.startsWith("tel:") ? undefined : "_blank"}
-                    rel={action.href.startsWith("tel:") ? undefined : "noreferrer"}
+                    rel={action.href.startsWith("tel:") ? undefined : "noopener noreferrer"}
+                    aria-label={`${action.label}: ${action.detail}`}
                     className="group bg-[rgb(var(--card)_/_0.76)] p-6 transition hover:bg-[rgb(var(--card))]"
                   >
                     <div className="flex items-center justify-between gap-4">
                       <span className="grid size-12 place-items-center border border-[rgb(var(--line))] bg-[rgb(var(--soft)_/_0.68)] text-[rgb(var(--ink))]">
                         <Icon size={21} />
                       </span>
-                      <ExternalLink size={17} className="text-[rgb(var(--muted))] transition group-hover:text-[rgb(var(--ink))]" />
+                      {action.href.startsWith("tel:") ? null : (
+                        <ExternalLink size={17} className="text-[rgb(var(--muted))] transition group-hover:text-[rgb(var(--ink))]" />
+                      )}
                     </div>
                     <p className="mt-6 text-sm font-bold uppercase tracking-[0.16em] text-[rgb(var(--ink))]">{action.label}</p>
                     <p className="mt-1 text-sm text-[rgb(var(--muted))]">{action.detail}</p>
