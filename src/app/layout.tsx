@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { getHeroImages, getLogoImage } from "@/lib/gallery";
 import { site } from "@/lib/site";
+import Script from "next/script";
 
 const heroImage = getHeroImages()[0]?.src ?? "/images/exterior/Screenshot%202026-05-25%20145359.png";
 // const logoImage = getLogoImage();
@@ -126,6 +127,21 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <Script
+  src="https://www.googletagmanager.com/gtag/js?id=G-ZCYWKSKM6B"
+  strategy="afterInteractive"
+/>
+
+<Script id="google-analytics" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZCYWKSKM6B');
+  `}
+</Script>
+      
+      
       </head>
       <body className="antialiased">
         <a
