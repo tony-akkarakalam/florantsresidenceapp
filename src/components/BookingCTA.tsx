@@ -1,19 +1,30 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ExternalLink, MapPinned } from "lucide-react";
 import { site } from "@/lib/site";
 import { SectionReveal } from "./SectionReveal";
 
 export function BookingCTA() {
   return (
-    <section id="book" className="py-24 sm:py-32">
+    <section id="book" className="architectural-section">
       <div className="section-shell">
         <SectionReveal>
-          <div className="overflow-hidden rounded-[36px] border border-[rgb(var(--line))] bg-[linear-gradient(135deg,rgb(var(--footer-bg)_/_0.96),rgb(var(--footer-bg)_/_0.86)),radial-gradient(circle_at_top_right,rgb(var(--accent)_/_0.28),transparent_28rem)] p-7 text-[rgb(var(--footer-text))] shadow-[var(--shadow-soft)] sm:p-12 lg:p-16">
-            <div className="max-w-3xl">
-              <span className="inline-flex rounded-full border border-white/18 bg-white/10 px-4 py-2 text-sm font-semibold text-white/78">
+          <div className="relative min-h-[42rem] overflow-hidden border border-[rgb(var(--line))] bg-[rgb(var(--footer-bg))] text-[rgb(var(--footer-text))] shadow-[var(--shadow-soft)]">
+            <Image
+              src="/images/exterior/Screenshot%202026-05-25%20145429.png"
+              alt="Florants Residence exterior"
+              fill
+              sizes="100vw"
+              className="object-cover object-center opacity-[0.58]"
+              unoptimized
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,9,0.82),rgba(8,8,9,0.44),rgba(8,8,9,0.70)),radial-gradient(circle_at_top_right,rgba(202,160,98,0.28),transparent_28rem)]" />
+            <div className="relative flex min-h-[42rem] items-end p-7 sm:p-12 lg:p-16">
+            <div className="max-w-4xl">
+              <span className="inline-flex border border-white/18 bg-white/10 px-4 py-2 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-white/78">
                 Ready when your dates are
               </span>
-              <h2 className="mt-7 font-display text-4xl leading-none text-white sm:text-6xl lg:text-7xl">
+              <h2 className="mt-8 font-display text-5xl leading-[0.9] tracking-[-0.06em] text-white sm:text-7xl lg:text-8xl">
                 Settle into a serene Kochi stay.
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/76">
@@ -28,6 +39,7 @@ export function BookingCTA() {
                   Get Directions <MapPinned size={18} />
                 </Link>
               </div>
+            </div>
             </div>
           </div>
         </SectionReveal>

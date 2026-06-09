@@ -60,6 +60,10 @@ export const viewport: Viewport = {
 const themeBootstrap = `
 (() => {
   try {
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+
     const stored = localStorage.getItem("florants-theme");
     const theme = stored === "dark" || stored === "light"
       ? stored
@@ -69,6 +73,12 @@ const themeBootstrap = `
   } catch {
     document.documentElement.dataset.theme = "light";
   }
+
+  window.addEventListener("pageshow", () => {
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  });
 })();
 `;
 

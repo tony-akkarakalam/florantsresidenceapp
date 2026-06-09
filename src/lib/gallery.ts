@@ -90,13 +90,7 @@ export function getHostImage() {
 }
 
 export function getLogoImage() {
-  const images = readPublicImages("logo");
-  const transparentMark = images.find((image) => image.toLowerCase() === "florants-mark.svg");
-  return transparentMark
-    ? toPublicImageUrl("logo", transparentMark)
-    : images[0]
-      ? toPublicImageUrl("logo", images[0])
-      : "/images/logo/florants-mark.svg";
+  return "/images/logo/Florants%20Residence.png";
 }
 
 export function getGalleryImages(): GalleryImage[] {

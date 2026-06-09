@@ -45,8 +45,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     () => ({
       theme,
       toggleTheme: () => {
-        const currentTheme = getInitialTheme();
-        applyTheme(currentTheme === "dark" ? "light" : "dark");
+        applyTheme(theme === "dark" ? "light" : "dark");
       }
     }),
     [theme]
@@ -54,6 +53,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
+
 
 export function useTheme() {
   const value = useContext(ThemeContext);

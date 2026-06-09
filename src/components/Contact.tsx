@@ -13,18 +13,18 @@ const actions = [
 
 export function Contact() {
   return (
-    <section className="py-20 sm:py-28" aria-labelledby="contact-title">
+    <section className="architectural-section py-20 sm:py-28" aria-labelledby="contact-title">
       <div className="section-shell">
         <SectionReveal>
-          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
             <div>
               <span className="eyebrow">Contact</span>
-              <h2 id="contact-title" className="section-title mt-5">Quick communication, kept simple.</h2>
+              <h2 id="contact-title" className="section-title mt-7">Quick communication, kept beautifully simple.</h2>
               <p className="section-copy mt-6">
                 Reach Aldrin through WhatsApp, view Airbnb, follow Florants on Instagram, or open directions.
               </p>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-px overflow-hidden border border-[rgb(var(--line))] bg-[rgb(var(--line))] sm:grid-cols-2">
               {actions.map((action) => {
                 const Icon = action.icon;
                 return (
@@ -33,15 +33,15 @@ export function Contact() {
                     href={action.href}
                     target={action.href.startsWith("tel:") ? undefined : "_blank"}
                     rel={action.href.startsWith("tel:") ? undefined : "noreferrer"}
-                    className="group rounded-[26px] border border-[rgb(var(--line))] bg-[rgb(var(--card)_/_0.82)] p-5 transition hover:-translate-y-1 hover:shadow-[var(--shadow-soft)]"
+                    className="group bg-[rgb(var(--card)_/_0.76)] p-6 transition hover:bg-[rgb(var(--card))]"
                   >
                     <div className="flex items-center justify-between gap-4">
-                      <span className="grid size-12 place-items-center rounded-2xl bg-[rgb(var(--soft))] text-[rgb(var(--ink))]">
+                      <span className="grid size-12 place-items-center border border-[rgb(var(--line))] bg-[rgb(var(--soft)_/_0.68)] text-[rgb(var(--ink))]">
                         <Icon size={21} />
                       </span>
                       <ExternalLink size={17} className="text-[rgb(var(--muted))] transition group-hover:text-[rgb(var(--ink))]" />
                     </div>
-                    <p className="mt-5 font-semibold text-[rgb(var(--ink))]">{action.label}</p>
+                    <p className="mt-6 text-sm font-bold uppercase tracking-[0.16em] text-[rgb(var(--ink))]">{action.label}</p>
                     <p className="mt-1 text-sm text-[rgb(var(--muted))]">{action.detail}</p>
                   </Link>
                 );
