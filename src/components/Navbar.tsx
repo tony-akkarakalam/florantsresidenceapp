@@ -99,9 +99,9 @@ export function Navbar({ logoSrc }: { logoSrc: string }) {
               className="h-full w-full object-contain"
             />
           </span>
-          <span className="hidden truncate font-display text-xl tracking-[-0.02em] text-[rgb(var(--ink))] sm:block">
-            Florants Residence
-          </span>
+          <span className="truncate font-display text-sm font-medium tracking-[-0.02em] text-[rgb(var(--ink))] sm:text-xl">
+  Florants Residence
+</span>
         </Link>
 
         <div className="hidden items-center gap-3 lg:flex">
