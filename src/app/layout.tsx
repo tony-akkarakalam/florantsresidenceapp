@@ -5,10 +5,10 @@ import { getHeroImages, getLogoImage } from "@/lib/gallery";
 import { site } from "@/lib/site";
 
 const heroImage = getHeroImages()[0]?.src ?? "/images/exterior/Screenshot%202026-05-25%20145359.png";
-const logoImage = getLogoImage();
+// const logoImage = getLogoImage();
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://florants-residence.vercel.app"),
+  metadataBase: new URL("https://florantsresidence.com"),
   title: "Florants Residence | Your Urban Haven in Kochi",
   description: site.description,
   applicationName: "Florants Residence",
@@ -28,9 +28,14 @@ export const metadata: Metadata = {
     follow: true
   },
   icons: {
-    icon: logoImage,
-    apple: logoImage
-  },
+  icon: [
+    { url: "/favicon.ico" },
+    { url: "/favicon.svg", type: "image/svg+xml" },
+    { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" }
+  ],
+  apple: "/apple-touch-icon.png",
+  shortcut: "/favicon.ico"
+},
   openGraph: {
     title: "Florants Residence | Your Urban Haven",
     description: site.description,
@@ -100,7 +105,7 @@ const jsonLd = {
   description: site.description,
   image: [heroImage],
   telephone: site.phone,
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://florants-residence.vercel.app",
+  url: "https://florantsresidence.com",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Kochi",
