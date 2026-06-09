@@ -107,17 +107,32 @@ const jsonLd = {
   image: [heroImage],
   telephone: site.phone,
   url: "https://florantsresidence.com",
+
   address: {
     "@type": "PostalAddress",
     addressLocality: "Kochi",
+    addressRegion: "Kerala",
     addressCountry: "IN"
   },
+
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 9.92622807852006,
+    longitude: 76.31135410859127
+  },
+
+  priceRange: "₹₹",
+
+  checkinTime: "14:00",
+  checkoutTime: "11:00",
+
   amenityFeature: [
     { "@type": "LocationFeatureSpecification", name: "WiFi", value: true },
     { "@type": "LocationFeatureSpecification", name: "Air conditioning", value: true },
     { "@type": "LocationFeatureSpecification", name: "Kitchen", value: true },
     { "@type": "LocationFeatureSpecification", name: "Self check-in", value: true }
   ],
+
   sameAs: [site.instagramUrl, site.mapsUrl]
 };
 
