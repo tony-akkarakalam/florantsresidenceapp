@@ -8,11 +8,24 @@ export function SplashScreen({ logoSrc }: { logoSrc: string }) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
     const timer = window.setTimeout(() => {
       setVisible(false);
+
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.style.overflow = originalHtmlOverflow;
     }, 2400);
 
-    return () => window.clearTimeout(timer);
+    return () => {
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.style.overflow = originalHtmlOverflow;
+      window.clearTimeout(timer);
+    };
   }, []);
 
   return (
@@ -23,45 +36,51 @@ export function SplashScreen({ logoSrc }: { logoSrc: string }) {
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
-            scale: 1.04,
-            filter: "blur(8px)",
             transition: {
-              duration: 0.65,
-              ease: "easeInOut"
+              duration: 1.3,
+              ease: [0.16, 1, 0.3, 1]
             }
           }}
           aria-hidden="true"
         >
-          {/* Ambient Glow */}
           <motion.div
             className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(212,180,129,0.16),transparent_32%),radial-gradient(circle_at_80%_78%,rgba(255,255,255,0.08),transparent_34%)]"
             animate={{
               opacity: [0.7, 1, 0.7]
             }}
             transition={{
-              duration: 3,
+              duration: 4,
               repeat: Infinity,
               ease: "easeInOut"
             }}
           />
 
           <div className="relative flex h-full w-full flex-col items-center justify-center px-4 pb-20">
-            {/* Large Logo */}
             <motion.div
               className="relative h-[48vh] w-full max-w-[92vw] sm:h-[52vh]"
               initial={{
                 opacity: 0,
-                y: 16,
-                scale: 0.96
+                y: 100,
+                scale: 0.98
               }}
               animate={{
                 opacity: 1,
                 y: 0,
-                scale: 1
+                scale: [1, 1.015, 1]
+              }}
+              exit={{
+                opacity: 0,
+                scale: 1.12,
+                filter: "blur(2px)",
+                transition: {
+                  duration: 1.4,
+                  ease: [0.16, 1, 0.3, 1]
+                }
               }}
               transition={{
-                duration: 0.75,
-                ease: "easeOut"
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
               }}
             >
               <Image
@@ -74,11 +93,17 @@ export function SplashScreen({ logoSrc }: { logoSrc: string }) {
               />
             </motion.div>
 
-            {/* Loading Area */}
-            <div
+            <motion.div
               className="absolute left-1/2 w-[17rem] -translate-x-1/2 sm:w-[22rem]"
               style={{
                 bottom: "max(3rem, calc(env(safe-area-inset-bottom) + 2rem))"
+              }}
+              exit={{
+                opacity: 0,
+                y: 8,
+                transition: {
+                  duration: 0.6
+                }
               }}
             >
               <div className="mb-2 flex items-center justify-center gap-2">
@@ -106,16 +131,12 @@ export function SplashScreen({ logoSrc }: { logoSrc: string }) {
                   initial={{ width: "4%" }}
                   animate={{ width: "100%" }}
                   transition={{
-                    duration: 2.2,
+                    duration: 2.35,
                     ease: "easeInOut"
                   }}
                 />
               </div>
-
-              <p className="mt-3 text-center text-xs uppercase tracking-[0.28em] text-white/75">
-                Loading
-              </p>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       )}

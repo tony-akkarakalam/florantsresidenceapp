@@ -9,11 +9,17 @@ import { Hero } from "@/components/Hero";
 import { Host } from "@/components/Host";
 import { Location } from "@/components/Location";
 import { Navbar } from "@/components/Navbar";
+import { PageReveal } from "@/components/PageReveal";
 import { PropertyDetails } from "@/components/PropertyDetails";
 import { Reviews } from "@/components/Reviews";
 import { ScrollRestoration } from "@/components/ScrollRestoration";
 import { SplashScreen } from "@/components/SplashScreen";
-import { getGalleryImages, getHeroImages, getHostImage, getLogoImage } from "@/lib/gallery";
+import {
+  getGalleryImages,
+  getHeroImages,
+  getHostImage,
+  getLogoImage
+} from "@/lib/gallery";
 
 export default function Home() {
   const heroImages = getHeroImages();
@@ -26,18 +32,22 @@ export default function Home() {
       <ScrollRestoration />
       <SplashScreen logoSrc={logoImage} />
       <Navbar logoSrc={logoImage} />
+
       <main id="main-content">
-        <Hero images={heroImages} />
-        <About />
-        <PropertyDetails />
-        <Amenities />
-        <Gallery images={galleryImages} />
-        <Location />
-        <Host imageSrc={hostImage} />
-        <Reviews />
-        <BookingCTA />
-        <Contact />
+        <PageReveal>
+          <Hero images={heroImages} />
+          <About />
+          <PropertyDetails />
+          <Amenities />
+          <Gallery images={galleryImages} />
+          <Location />
+          <Host imageSrc={hostImage} />
+          <Reviews />
+          <BookingCTA />
+          <Contact />
+        </PageReveal>
       </main>
+
       <FloatingActions />
       <Footer />
     </>

@@ -140,24 +140,32 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <Script
-  src="https://www.googletagmanager.com/gtag/js?id=G-ZCYWKSKM6B"
-  strategy="afterInteractive"
-/>
+  <Script id="theme-bootstrap" strategy="beforeInteractive">
+    {themeBootstrap}
+  </Script>
 
-<Script id="google-analytics" strategy="afterInteractive">
-  {`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-ZCYWKSKM6B');
-  `}
-</Script>
-      
-      
-      </head>
+  <Script
+    id="structured-data"
+    type="application/ld+json"
+    strategy="beforeInteractive"
+  >
+    {JSON.stringify(jsonLd)}
+  </Script>
+
+  <Script
+    src="https://www.googletagmanager.com/gtag/js?id=G-ZCYWKSKM6B"
+    strategy="afterInteractive"
+  />
+
+  <Script id="google-analytics" strategy="afterInteractive">
+    {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZCYWKSKM6B');
+    `}
+  </Script>
+</head>
       <body className="antialiased">
         <a
           href="#main-content"
