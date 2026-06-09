@@ -35,7 +35,7 @@ export const site = {
   "Florants Residence is a premium private 2BHK Airbnb stay in Kochi, Kerala, offering comfortable bedrooms, modern amenities, self check-in, WiFi, and a convenient location near Lakeshore Hospital, Forum Mall, and major city attractions.",
   bookingUrl: "https://www.airbnb.co.in/rooms/1424620787859594103",
   mapsUrl: "https://maps.app.goo.gl/UUgF7wGMijQ969Gu8",
-  instagramUrl: "https://www.instagram.com/florantsbnb?igsh=MWY5ejNta2Y0NWpndA==",
+  instagramUrl: "https://www.instagram.com/florants_bnb?igsh=MWY5ejNta2Y0NWpndA==",
   phone: "+919633735295",
   displayPhone: "+91 96337 35295",
   whatsappMessage: "Hi Aldrin, I would like to know more about Florants Residence.",
@@ -85,7 +85,7 @@ export const amenities = [
   { label: "CCTV", icon: ShieldCheck },
   { label: "Fire Extinguisher", icon: FireExtinguisher },
   { label: "Washing Machine", icon: WashingMachine },
-  { label: "Paid Parking", icon: ParkingCircle },
+  { label: "Free Parking", icon: ParkingCircle },
   { label: "Lockbox", icon: LockKeyhole },
   { label: "Cleaning During Stay", icon: CheckCircle2 }
 ];
